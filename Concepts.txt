@@ -1,0 +1,16 @@
+* Variables  - varaibles.tf
+* default tfvars  - terraform.tfvars
+* command line -  terraform -var "xxx = yyy"
+* custom tfvars  - kishore.tfvars terraform -var-faile kishore.tfvars
+* use environment variable - export or set
+* Conditions - condition ? true : false
+* Loops  : count[index]
+* Outputs - output.tf - output "<name>" { value = value = resource.id } 
+* Interpolation -  adding somthing to string  ${}
+* Functions - No option for custom function but use inbuild functions using command terraform console(max(100,109) or length().
+* Locals - use local rather than var
+* Datasources
+* for_each loop
+* Dynamic Block
+* Terraform state
+* Terraform Remote state

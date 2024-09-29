@@ -1,21 +1,21 @@
 resource "aws_instance" "web" {
-  ami           = "ami-0e54eba7c51c234f6"
-  count = length(var.instance_name)
-  instance_type = var.instance_name[count.index] == "kishore" ? "t2.small" : "t2.medium"
+  ami  = data.aws_ami.kishore.id 
+  for_each = var.instance_name
+  instance_type = each.value
   vpc_security_group_ids = [aws_security_group.TerraFormSG.id] 
   tags = {
-      Name = var.instance_name[count.index]
-      city = "TEXAS"
+      Name = each.key
+      city = "SANANT"
   }
 }
 
 resource "aws_route53_record" "www" {
-  count = length(var.instance_name)
+  for_each = aws_instance.web
   zone_id = "Z071107613ZYKYO29V593"
-  name    = "${var.instance_name[count.index]}"
+  name    = "${each.key}"
   type    = "A"
   ttl     = 1
-  records = [local.privateip]
+  records = [each.value.private_ip]
 }
 
 resource "aws_security_group" "TerraFormSG" {

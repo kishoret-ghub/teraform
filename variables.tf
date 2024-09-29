@@ -12,10 +12,13 @@ variable "instance_type" {
   
 }
 
-
-
 variable "instance_name" {
-    type = list
-    default = ["kishore","shalini","loukya","arjun"]
-  
+    type = map
+    default = {
+        "KT" = "t3.small"
+        "ST" = "t2.small"
+        "LT" = "t3.medium"
+        "AT" = "t2.medium"
+    }
 }
+
