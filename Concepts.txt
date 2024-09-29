@@ -1,6 +1,6 @@
 ==========>>>>>  Terraform ===========>>>>>>
 
-* To connect terraform to aws we need to install aws cli.
+* Connect terraform to aws we need to install frist aws cli.
 * install aws cli first
 * create IAM user and gave admin prvilages to the user.
 * get acccess and security key from user.
