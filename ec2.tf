@@ -1,10 +1,21 @@
 resource "aws_instance" "web" {
   ami           = "ami-0e54eba7c51c234f6"
-  instance_type = "t2.micro"
+  count = length(var.instance_name)
+  instance_type = var.instance_name[count.index] == "kishore" ? "t2.small" : "t2.medium"
   vpc_security_group_ids = [aws_security_group.TerraFormSG.id] 
   tags = {
-    Name = "TerraformHello2"
+      Name = var.instance_name[count.index]
+      city = "TEXAS"
   }
+}
+
+resource "aws_route53_record" "www" {
+  count = length(var.instance_name)
+  zone_id = "Z071107613ZYKYO29V593"
+  name    = "${var.instance_name[count.index]}"
+  type    = "A"
+  ttl     = 1
+  records = [local.privateip]
 }
 
 resource "aws_security_group" "TerraFormSG" {
@@ -32,6 +43,8 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
   cidr_ipv4         = var.CIDR
   ip_protocol       = "-1" # semantically equivalent to all ports
 }
+
+
 
 
 
