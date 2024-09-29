@@ -1,3 +1,24 @@
+==========>>>>>  Terraform ===========>>>>>>
+
+* To connect terraform to aws we need to install aws cli.
+* install aws cli first
+* create IAM user and gave admin prvilages to the user.
+* get acccess and security key from user.
+* run aws configure command  and provide acccess and security key.
+* after command rum aws cli will create .aws folder in the current user home directory
+* .aws folder have the authentication info.
+* Install terrform( get the terraform.exe file for your platform)
+* set the path varaiable for all users envirnment variable to the terraform.exe file location.
+* then your good to execute below coomands
+
+-> terraform --version
+-> terraform init
+-> terform init -regenerate
+-> terform plan
+-> terform apply -auto-approve
+-> terform destroy -auto-approve
+
+
 * Variables  - varaibles.tf
 * default tfvars  - terraform.tfvars
 * command line -  terraform -var "xxx = yyy"
@@ -14,3 +35,7 @@
 * Dynamic Block
 * Terraform state
 * Terraform Remote state
+
+
+
+
